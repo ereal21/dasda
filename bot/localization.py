@@ -24,7 +24,8 @@ LANGUAGES = {
         'admin_help_info': (
             'Admin panel functions:\n'
             '🛠 Assign assistants – manage assistant accounts.\n'
-            '📦 View Stock – browse and delete available product stock.\n'
+            '🧰 Manage Stock – update prices and stock entries.\n'
+            '📊 View Stock – overview of categories and item quantities.\n'
             '🏪 Parduotuvės valdymas – manage shop categories and items.\n'
             '👥 Vartotojų valdymas – manage user balances and roles.\n'
             '📢 Pranešimų siuntimas – send messages to all users.'
@@ -130,7 +131,8 @@ LANGUAGES = {
         'admin_help_info': (
             'Функции админ-панели:\n'
             '🛠 Назначить ассистентов – управление помощниками.\n'
-            '📦 Просмотр склада – список товаров и удаление остатков.\n'
+            '🧰 Управление складом – обновление цен и остатков товаров.\n'
+            '📊 Просмотр склада – обзор категорий и количества товаров.\n'
             '🏪 Parduotuvės valdymas – управление магазином.\n'
             '👥 Vartotojų valdymas – управление пользователями.\n'
             '📢 Pranešimų siuntimas – рассылка сообщений.'
