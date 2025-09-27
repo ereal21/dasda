@@ -45,6 +45,7 @@ async def view_stock_callback_handler(call: CallbackQuery):
             message_id=call.message.message_id,
             reply_markup=stock_categories_list(user_id, categories, None),
         )
+        await call.answer()
         return
     await call.answer('Insufficient rights')
 
@@ -336,7 +337,7 @@ async def stock_price_input_handler(message: Message):
 
 def register_view_stock(dp: Dispatcher) -> None:
     dp.register_callback_query_handler(
-        view_stock_callback_handler, lambda c: c.data == 'view_stock'
+        view_stock_callback_handler, lambda c: c.data == 'manage_stock'
     )
     dp.register_callback_query_handler(
         view_stock_category_handler,
