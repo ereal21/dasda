@@ -51,6 +51,11 @@ LANGUAGES = {
         'back_home': 'Back Home',
         'invoice_cancelled': 'Payment failed/expired. Your items are no longer reserved.',
         'total_purchases': '📦 Total Purchases: {count}',
+        'lounge_invite': (
+            "🍷 Can't find or see something?\n"
+            'Slide into our apartments by the whiskey and treats table — we\'ll sort everything out for mutual benefit.'
+        ),
+        'lounge_signature': '👑 - @KARUNELES - 👑',
         'note': '⚠️ Note: No refunds. Please ensure you send the exact amount for payments, as underpayments will not be confirmed.',
         'feedback_service': '🛎️ How was your experience with the service?\n✍️ Leave a hand review in our group: https://t.me/+QVDtC4t9OglmZDVk',
         'feedback_product': 'Opinion on the product?',
@@ -158,6 +163,11 @@ LANGUAGES = {
         'back_home': 'Назад домой',
         'invoice_cancelled': 'Оплата не завершена/истекла. Ваши товары больше не зарезервированы.',
         'total_purchases': '📦 Всего покупок: {count}',
+        'lounge_invite': (
+            '🍷 Кто-то что-то не находит или не видит?\n'
+            'Загляните к нам в апартаменты к столику с виски и угощениями — обсудим всё так, чтобы всем было выгодно.'
+        ),
+        'lounge_signature': '👑 - @KARUNELES - 👑',
         'note': '⚠️ Возврат средств невозможен. Отправляйте точную сумму, недоплаты не подтверждаются.',
         'feedback_service': '🛎️ Как вам обслуживание?\n✍️ Напишите отзыв вручную в группе: https://t.me/+QVDtC4t9OglmZDVk',
         'feedback_product': 'Мнение о товаре?',
@@ -263,6 +273,11 @@ LANGUAGES = {
         'back_home': 'Grįžti į pradžią',
         'invoice_cancelled': 'Mokėjimas nepavyko/baigėsi. Jūsų prekės nebėra rezervuotos.',
         'total_purchases': '📦 Viso pirkinių: {count}',
+        'lounge_invite': (
+            '🍷 Kažkas kažko neranda, nemato?\n'
+            'Šokam pas mus į apartamentus prie viskio ir vaišių stalo – tada aptarsim viską abiejų pusių naudai.'
+        ),
+        'lounge_signature': '👑 - @KARUNELES - 👑',
         'note': '⚠️ Pastaba: grąžinimų nėra. Įsitikinkite, kad siunčiate tikslią sumą, nes nepakankamos sumos nebus patvirtintos.',
         'feedback_service': '🛎️ Kaip vertinate aptarnavimą?\n✍️ Parašykite atsiliepimą šioje grupėje: https://t.me/+QVDtC4t9OglmZDVk',
         'feedback_product': 'Kokia nuomonė apie prekę?',
