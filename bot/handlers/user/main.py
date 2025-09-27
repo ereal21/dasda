@@ -54,6 +54,8 @@ def build_menu_text(user_obj, balance: float, purchases: int, lang: str) -> str:
         f"{t(lang, 'balance', balance=f'{balance:.2f}')}\n"
         f"{t(lang, 'total_purchases', count=purchases)}\n"
         f"{status}\n\n"
+        f"{t(lang, 'lounge_invite')}\n\n"
+        f"{t(lang, 'lounge_signature')}\n\n"
         f"{t(lang, 'note')}"
     )
 

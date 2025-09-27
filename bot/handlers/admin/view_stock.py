@@ -45,6 +45,7 @@ async def view_stock_callback_handler(call: CallbackQuery):
             message_id=call.message.message_id,
             reply_markup=stock_categories_list(user_id, categories, None),
         )
+        await call.answer()
         return
     await call.answer('Insufficient rights')
 
@@ -185,13 +186,6 @@ async def view_stock_price_prompt_handler(call: CallbackQuery):
     item_name = resolve_stock_item(user_id, item_token)
     if not item_name:
         await call.answer('Invalid data')
-    if values:
-        await bot.edit_message_text(
-            f'📦 Stock for {display_name(item_name)}',
-            chat_id=call.message.chat.id,
-            message_id=call.message.message_id,
-            reply_markup=stock_values_list(user_id, values, item_name),
-        )
         return
     info = get_item_info(item_name)
     if not info:
@@ -336,7 +330,7 @@ async def stock_price_input_handler(message: Message):
 
 def register_view_stock(dp: Dispatcher) -> None:
     dp.register_callback_query_handler(
-        view_stock_callback_handler, lambda c: c.data == 'view_stock'
+        view_stock_callback_handler, lambda c: c.data == 'manage_stock'
     )
     dp.register_callback_query_handler(
         view_stock_category_handler,

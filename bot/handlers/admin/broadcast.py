@@ -1,13 +1,14 @@
 import asyncio
 from aiogram import Dispatcher
 from aiogram.types import Message, CallbackQuery
-from aiogram.utils.exceptions import BotBlocked
+from aiogram.utils.exceptions import BotBlocked, TelegramAPIError
 
 from bot.keyboards import back, close
 from bot.database.methods import check_role, get_all_users
 from bot.database.models import Permission
 from bot.misc import TgConfig
 from bot.logger_mesh import logger
+from bot.utils.safe_sender import safe_send_copy
 from bot.handlers.other import get_bot_user_ids
 
 
@@ -41,15 +42,18 @@ async def broadcast_messages(message: Message):
     max_users = 0
     for user_row in users:
         max_users += 1
-        target_id = user_row[0]
-        await asyncio.sleep(0.1)
+        target_id = int(user_row[0])
+        await asyncio.sleep(0.3)
         try:
-            await original_message.send_copy(
-                chat_id=int(target_id),
+            await safe_send_copy(
+                original_message,
+                target_id,
                 reply_markup=close(),
             )
         except BotBlocked:
-            pass
+            logger.info("Broadcast skipped for %s: bot blocked", target_id)
+        except TelegramAPIError as exc:
+            logger.warning("Failed to deliver broadcast to %s: %s", target_id, exc)
     TgConfig.STATE.pop(f'{sender_id}_message_id', None)
     await bot.edit_message_text(
         chat_id=message.chat.id,

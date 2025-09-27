@@ -6,6 +6,7 @@ from bot.database.methods import (
     get_category_parent,
     select_item_values_amount,
     has_used_promo_for_item,
+    check_value,
 )
 from bot.misc import TgConfig
 from bot.utils import display_name
@@ -150,8 +151,13 @@ def console(role: int) -> InlineKeyboardMarkup:
          InlineKeyboardButton('📢 Pranešimų siuntimas', callback_data='send_message')],
     ]
     if role & Permission.OWN:
-        inline_keyboard.insert(0, [InlineKeyboardButton('🛠 Assign assistants', callback_data='assistant_management'),
-                                   InlineKeyboardButton('📦 View Stock', callback_data='view_stock')])
+        inline_keyboard.insert(0, [
+            InlineKeyboardButton('🛠 Assign assistants', callback_data='assistant_management'),
+            InlineKeyboardButton('🧰 Manage Stock', callback_data='manage_stock')
+        ])
+        inline_keyboard.insert(1, [
+            InlineKeyboardButton('📊 View Stock', callback_data='view_stock_overview')
+        ])
     inline_keyboard.append([InlineKeyboardButton('❓ Help', callback_data='admin_help')])
     inline_keyboard.append([InlineKeyboardButton('🔙 Back to menu', callback_data='back_to_menu')])
     return InlineKeyboardMarkup(inline_keyboard=inline_keyboard)
@@ -436,7 +442,7 @@ def stock_goods_list(user_id: int, list_items: list[str], category_name: str) ->
     _get_category_token(cache, category_name)
     markup = InlineKeyboardMarkup()
     for name in list_items:
-        amount = select_item_values_amount(name)
+        amount = '∞' if check_value(name) else select_item_values_amount(name)
         item_token = _get_item_token(cache, name)
         markup.add(InlineKeyboardButton(
             text=f'{display_name(name)} ({amount})',
